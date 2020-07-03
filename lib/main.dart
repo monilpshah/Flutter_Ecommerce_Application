@@ -3,6 +3,7 @@ import 'package:carousel_pro/carousel_pro.dart';
 
 import 'package:trendingfashion/components/horizontal_listview.dart';
 import 'package:trendingfashion/components/products.dart';
+import 'package:trendingfashion/pages/cart.dart';
 
 void main() {
   runApp(MaterialApp(
@@ -38,6 +39,7 @@ class _HomePageState extends State<HomePage> {
         animationDuration: Duration(milliseconds: 1000),
         dotSize: 4.0,
         indicatorBgPadding: 8,
+        dotBgColor: Colors.transparent,
       ),
     );
 
@@ -45,7 +47,7 @@ class _HomePageState extends State<HomePage> {
       appBar: new AppBar(
         elevation: 0.3,
         backgroundColor: Colors.red,
-        title: Text('Trending Fashion'),
+        title: Text('ECom'),
         actions: <Widget>[
           new IconButton(
               icon: Icon(
@@ -58,7 +60,9 @@ class _HomePageState extends State<HomePage> {
                 Icons.shopping_cart,
                 color: Colors.white,
               ),
-              onPressed: () {})
+              onPressed: () {
+                Navigator.push(context, MaterialPageRoute(builder: (context)=> new Cart()));
+              })
         ],
       ),
       drawer: new Drawer(
@@ -85,7 +89,7 @@ class _HomePageState extends State<HomePage> {
               onTap: (){},
               child: ListTile(
                 title: Text('Home'),
-                leading: Icon(Icons.home),
+                leading: Icon(Icons.home, color: Colors.red,),
               ),
             ),
 
@@ -93,7 +97,7 @@ class _HomePageState extends State<HomePage> {
               onTap: (){},
               child: ListTile(
                 title: Text('Favourites'),
-                leading: Icon(Icons.favorite),
+                leading: Icon(Icons.favorite, color: Colors.red,),
               ),
             ),
 
@@ -101,7 +105,7 @@ class _HomePageState extends State<HomePage> {
               onTap: (){},
               child: ListTile(
                 title: Text('My Account'),
-                leading: Icon(Icons.person),
+                leading: Icon(Icons.person, color: Colors.red,),
               ),
             ),
 
@@ -109,15 +113,17 @@ class _HomePageState extends State<HomePage> {
               onTap: (){},
               child: ListTile(
                 title: Text('My Orders'),
-                leading: Icon(Icons.shopping_basket),
+                leading: Icon(Icons.shopping_basket, color: Colors.red,),
               ),
             ),
 
             InkWell(
-              onTap: (){},
+              onTap: (){
+                Navigator.push(context, MaterialPageRoute(builder: (context) => new Cart()));
+              },
               child: ListTile(
-                title: Text('Categories'),
-                leading: Icon(Icons.dashboard),
+                title: Text('Shopping Cart'),
+                leading: Icon(Icons.shopping_cart, color: Colors.red,),
               ),
             ),
 
@@ -158,12 +164,13 @@ class _HomePageState extends State<HomePage> {
           HorizontalList(),
 
           //Recent Products
-          new Padding(padding: const EdgeInsets.fromLTRB(8, 20, 8, 8),
-            child: new Text('Recent Products'),),
+          new Padding(padding: const EdgeInsets.fromLTRB(8, 20, 8, 20),
+            child: new Text('Recent Products',
+              style: TextStyle(fontWeight: FontWeight.bold),),),
 
           //Grid View
           Container(
-            height: 320,
+            height: 200,
             child: Products(),
           ),
 

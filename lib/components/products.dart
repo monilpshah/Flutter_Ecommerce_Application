@@ -32,7 +32,18 @@ class _ProductsState extends State<Products> {
       "oldPrice" : 120,
       "price": 85,
     },
-    
+    {
+      "name": "Hills",
+      "picture": "images/products/hills1.jpeg",
+      "oldPrice" : 120,
+      "price": 85,
+    },
+    {
+      "name": "Hills brand",
+      "picture": "images/products/hills2.jpeg",
+      "oldPrice" : 120,
+      "price": 85,
+    },
   ];
   @override
   Widget build(BuildContext context) {
@@ -62,7 +73,7 @@ class Single_prod extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Hero(tag: prodName, child: Material(
+      child: Hero(tag: new Text(prodName), child: Material(
         child: InkWell(
           onTap: ()=> Navigator.of(context).push(
 
@@ -75,27 +86,22 @@ class Single_prod extends StatelessWidget {
                 productDetailsPicture: prodPicture,))),
         child: GridTile(
           footer: Container(
-            color: Colors.white70,
-            child: ListTile(
-              leading: Text(prodName, style: TextStyle(
-                fontWeight: FontWeight.bold
-              ),
-              ),
-
-              title: Text("₹$prodPrice", style: TextStyle(
-                color: Colors.red,fontWeight: FontWeight.bold
-              ),),
-
-              subtitle: Text("₹$prodOldPrice", style: TextStyle(
-                  color: Colors.black54,fontWeight: FontWeight.bold,
-                  decoration:TextDecoration.lineThrough,
-              ),),
+            color: Colors.white,
+            child: new Row(
+              children: <Widget>[
+                Expanded(
+                  child: new Text(prodName,style: TextStyle(fontWeight: FontWeight.bold,fontSize: 16),),
+                ),
+                new Text("₹$prodOldPrice ",style: TextStyle(color: Colors.black26,fontWeight: FontWeight.bold,decoration: TextDecoration.lineThrough),),
+                new Text(" ₹$prodPrice",style: TextStyle(color: Colors.red,fontWeight: FontWeight.bold),),
+              ],
             ),
           ),
           child: Image.asset(prodPicture,fit: BoxFit.cover,),
           ),
         ),
-      ),),
+      ),
+      ),
     );
   }
 }
