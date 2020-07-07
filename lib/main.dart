@@ -32,7 +32,6 @@ class _HomePageState extends State<HomePage> {
           AssetImage('images/w1.jpeg'),
           AssetImage('images/w3.jpeg'),
           AssetImage('images/w4.jpeg'),
-          AssetImage('images/IMG_1266.jpg'),
         ],
         autoplay: true,
         animationCurve: Curves.fastOutSlowIn,
